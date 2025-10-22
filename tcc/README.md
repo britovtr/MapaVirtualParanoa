@@ -25,6 +25,8 @@ If you are developing a production application, we recommend using TypeScript wi
 
 - Modal das regiões com descrição e foto
 
+- Índice das regiões com as cores referentes a elas
+
 ### Regiões
 
 - Refeitório
@@ -33,7 +35,7 @@ If you are developing a production application, we recommend using TypeScript wi
 
 - Data Wake
 
-
+- 
 
 ## Zoom In e Zoom Out
 - Botão de "+" para dar Zoom In
