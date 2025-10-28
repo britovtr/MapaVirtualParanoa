@@ -4,66 +4,115 @@ import styled from "styled-components";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 
+
 const FooterContainer = styled.footer`
-  background: #0d1b2a;
-  color: #fff;
-  text-align: center;
-  padding: 30px 20px;
-  margin-top: 50px;
+  background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%);
+  color: #f8f9fa;
+  padding: 50px 20px 25px;
+  margin-top: 80px;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+max-width: 100vw;
+overflow-x: hidden;
+
 `;
 
 const FooterTop = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-bottom: 15px;
-  gap: 20px;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto 25px;
 `;
 
 const FooterSection = styled.div`
-  min-width: 180px;
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
 
 const Title = styled.h3`
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #00aaff;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #00aaff;
+    margin-top: 6px;
+    border-radius: 2px;
+  }
 `;
 
-const Link = styled.a`
+const StyledLink = styled.a`
   display: block;
-  color: #fff;
+  color: #ddd;
   text-decoration: none;
-  margin: 5px 0;
-  font-size: 0.9rem;
-  transition: color 0.3s;
+  margin: 6px 0;
+  font-size: 0.95rem;
+  transition: 0.3s;
 
   &:hover {
     color: #00aaff;
+    transform: translateX(4px);
+  }
+`;
+
+const ContactText = styled.p`
+  font-size: 0.95rem;
+  margin: 6px 0;
+  color: #ccc;
+
+  span {
+    color: #00aaff;
+    margin-right: 6px;
   }
 `;
 
 const Socials = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 15px 0;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-top: 10px;
 
   svg {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     cursor: pointer;
+    color: #ddd;
     transition: 0.3s;
 
     &:hover {
       color: #00aaff;
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
   }
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const Divider = styled.hr`
+  border: none;
+  border-top: 1px solid #1e2d3d;
+  margin: 25px auto;
+  width: 90%;
+  max-width: 1100px;
 `;
 
 const Copyright = styled.p`
   font-size: 0.85rem;
-  color: #ccc;
+  color: #aaa;
+  text-align: center;
 `;
 
 export default function Footer() {
@@ -72,16 +121,22 @@ export default function Footer() {
       <FooterTop>
         <FooterSection>
           <Title>Mapa Virtual</Title>
-          <Link href="#">Início</Link>
-          <Link href="#">Mapa</Link>
-          <Link href="#">Sobre</Link>
+          <StyledLink href="#">Início</StyledLink>
+          <StyledLink href="#">Mapa</StyledLink>
+          <StyledLink href="#">Sobre</StyledLink>
         </FooterSection>
 
         <FooterSection>
           <Title>Contato</Title>
-          <p>📍 Rua Industrial, 123</p>
-          <p>📞 (11) 99999-9999</p>
-          <p>✉️ contato@fabrica.com</p>
+          <ContactText>
+            <span>📍</span> Rua Industrial, 123
+          </ContactText>
+          <ContactText>
+            <span>📞</span> (11) 99999-9999
+          </ContactText>
+          <ContactText>
+            <span>✉️</span> contato@fabrica.com
+          </ContactText>
         </FooterSection>
 
         <FooterSection>
@@ -94,7 +149,7 @@ export default function Footer() {
         </FooterSection>
       </FooterTop>
 
-      <hr style={{ border: "none", borderTop: "1px solid #1e2d3d", margin: "15px 0" }} />
+      <Divider />
       <Copyright>
         © {new Date().getFullYear()} Fábrica Virtual — Todos os direitos reservados.
       </Copyright>

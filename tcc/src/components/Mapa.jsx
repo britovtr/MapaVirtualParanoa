@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import LocationModal from "./LocationModal";
 
+
 // ---------- Styled Components ----------
 const MapContainer = styled.div`
   position: relative;
@@ -11,13 +12,18 @@ const MapContainer = styled.div`
   align-items: center;
   margin-top: 20px;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 `;
 
 const MapaImg = styled.img`
-  width: 100%;
-  max-width: 1200px;
+  width: 90%; /* menor horizontalmente — antes era 100% */
+  max-width: 1000px; /* limite de tamanho em telas grandes */
+  height: auto;
   border: 2px solid #333;
   border-radius: 8px;
+  display: block;
+  margin: 0 auto;
 `;
 
 const Marker = styled.button`

@@ -3,57 +3,98 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FiMenu, FiX } from "react-icons/fi";
 
+
 const Nav = styled.nav`
   width: 100%;
-  background: linear-gradient(135deg, #004c99, #007bff);
+  background: linear-gradient(135deg, #003366, #007bff);
   color: #fff;
-  padding: 15px 30px;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    padding: 12px 25px;
+  }
 `;
 
 const Logo = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   cursor: pointer;
+  user-select: none;
+
+  span {
+    color: #ffd700;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 const Menu = styled.ul`
   display: flex;
-  gap: 25px;
+  gap: 30px;
   list-style: none;
-  transition: 0.3s;
+  align-items: center;
+  transition: all 0.4s ease;
 
   @media (max-width: 768px) {
     position: fixed;
     top: 0;
     right: ${({ open }) => (open ? "0" : "-100%")};
     height: 100vh;
-    width: 220px;
-    background: #004c99;
+    width: 250px;
+    background: #002244;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    gap: 30px;
-    transition: 0.4s ease-in-out;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    gap: 35px;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -3px 0 15px rgba(0, 0, 0, 0.4);
   }
 `;
 
 const MenuItem = styled.li`
-  cursor: pointer;
+  position: relative;
   font-size: 1rem;
   font-weight: 500;
-  transition: color 0.2s;
+  cursor: pointer;
+  color: #f8f9fa;
+  transition: color 0.3s ease-in-out;
 
   &:hover {
     color: #ffd700;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ffd700;
+    bottom: -4px;
+    left: 0;
+    transition: width 0.3s;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &.active {
+    color: #ffd700;
+  }
+
+  &.active::after {
+    width: 100%;
   }
 `;
 
@@ -61,31 +102,68 @@ const MenuButton = styled.button`
   background: none;
   border: none;
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   cursor: pointer;
   display: none;
+  z-index: 1100;
 
   @media (max-width: 768px) {
     display: block;
   }
+
+  &:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+`;
+
+const Overlay = styled.div`
+  display: ${({ open }) => (open ? "block" : "none")};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
 `;
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState("Início");
+
+  const handleItemClick = (name) => {
+    setActive(name);
+    setMenuOpen(false);
+  };
 
   return (
-    <Nav>
-      <Logo>🏭 Fábrica Virtual</Logo>
+    <>
+      <Nav>
+        <Logo>
+          🏭 <span>Fábrica</span> Virtual
+        </Logo>
 
-      <MenuButton onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? <FiX /> : <FiMenu />}
-      </MenuButton>
+        <MenuButton onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <FiX /> : <FiMenu />}
+        </MenuButton>
 
-      <Menu open={menuOpen}>
-        <MenuItem>Início</MenuItem>
-        <MenuItem>Mapa</MenuItem>
-        <MenuItem>Sobre</MenuItem>
-      </Menu>
-    </Nav>
+        <Menu open={menuOpen}>
+          {["Início", "Mapa", "Sobre"].map((item) => (
+            <MenuItem
+              key={item}
+              className={active === item ? "active" : ""}
+              onClick={() => handleItemClick(item)}
+            >
+              {item}
+            </MenuItem>
+          ))}
+        </Menu>
+      </Nav>
+
+      {/* Overlay para escurecer o fundo no mobile */}
+      <Overlay open={menuOpen} onClick={() => setMenuOpen(false)} />
+    </>
   );
 }

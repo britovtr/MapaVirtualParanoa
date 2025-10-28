@@ -3,6 +3,7 @@ import React from "react";
 import Mapa from "./components/Mapa";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import "./index.css";
 
 function App() {
   return (
