@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FiMenu, FiX } from "react-icons/fi";
+import logo from "../components/paranoa.png"; 
 
-
+// ---------- Estilos ----------
 const Nav = styled.nav`
   width: 100%;
   background: linear-gradient(135deg, #003366, #007bff);
@@ -12,7 +13,7 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
+  position: fixed; /* FIXO no topo */
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -24,11 +25,19 @@ const Nav = styled.nav`
 `;
 
 const Logo = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   cursor: pointer;
   user-select: none;
+  gap: 10px;
+
+  img {
+    height: 40px;
+    width: auto;
+  }
 
   span {
     color: #ffd700;
@@ -129,6 +138,7 @@ const Overlay = styled.div`
   z-index: 900;
 `;
 
+// ---------- Componente ----------
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("Início");
@@ -142,7 +152,8 @@ export default function Navbar() {
     <>
       <Nav>
         <Logo>
-          🏭 <span>Fábrica</span> Virtual
+          <img src={logo} alt="Logo Fábrica Virtual" />
+
         </Logo>
 
         <MenuButton onClick={() => setMenuOpen(!menuOpen)}>

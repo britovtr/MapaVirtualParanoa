@@ -1,20 +1,15 @@
-// src/App.jsx
-import React from "react";
-import Mapa from "./components/Mapa";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import "./index.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Funcionarios from "./pages/Funcionario";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <h1 style={{ textAlign: "center", marginTop: "20px" }}>
-        🏭 Mapa Virtual da Fábrica
-      </h1>
-      <Mapa />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/funcionarios" element={<Funcionarios />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
