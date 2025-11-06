@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FiMenu, FiX } from "react-icons/fi";
-import logo from "../components/paranoa.png"; 
+import logo from "../imagens/paranoa.png"; 
 
 // ---------- Estilos ----------
 const Nav = styled.nav`
@@ -40,7 +40,7 @@ const Logo = styled.div`
   }
 
   span {
-    color: #ffd700;
+    color: #003cff;
   }
 
   &:hover {
@@ -80,7 +80,7 @@ const MenuItem = styled.li`
   transition: color 0.3s ease-in-out;
 
   &:hover {
-    color: #ffd700;
+    color: #9fcbf0;
   }
 
   &::after {
@@ -88,7 +88,7 @@ const MenuItem = styled.li`
     position: absolute;
     width: 0%;
     height: 2px;
-    background: #ffd700;
+    background: #72a5df;
     bottom: -4px;
     left: 0;
     transition: width 0.3s;
@@ -99,7 +99,7 @@ const MenuItem = styled.li`
   }
 
   &.active {
-    color: #ffd700;
+    color: #03347c;
   }
 
   &.active::after {

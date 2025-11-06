@@ -10,9 +10,12 @@
     "styled-components": "^6.0.7"
   },
   "scripts": {
-    "start": "vite"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "vite": "^7.1.12",
+    "@vitejs/plugin-react": "^4.3.2"
   }
 }
