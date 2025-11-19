@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import api from "../api";
 import { useNavigate } from "react-router-dom";
 import Teia from "../imagens/Teia.jpg";
-import logo from "../imagens/paranoa.png"; 
+import logo from "../imagens/paranoa.png";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -11,25 +10,24 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    try {
-      const res = await api.post("/auth/login", { email, senha });
-      alert(res.data.message || "Login realizado com sucesso!");
-      setEmail("");
-      setSenha("");
-      navigate("/mapa");
-    } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.error || "Erro no login");
-    } finally {
-      setLoading(false);
-    }
-  };
 
-  const goToCadastro = () => {
-    navigate("/funcionarios");
+    const funcionario = JSON.parse(localStorage.getItem("funcionario"));
+
+    setTimeout(() => {
+      if (!funcionario) {
+        alert("Nenhum funcionário cadastrado!");
+      } else if (email === funcionario.email && senha === funcionario.senha) {
+        localStorage.setItem("auth", "true"); // marca como logado
+        navigate("/mapa");
+      } else {
+        alert("E-mail ou senha incorretos!");
+      }
+
+      setLoading(false);
+    }, 800);
   };
 
   return (
@@ -61,7 +59,7 @@ export default function Login() {
 
         <Divider>ou</Divider>
 
-        <SecondaryButton type="button" onClick={goToCadastro}>
+        <SecondaryButton onClick={() => navigate("/funcionarios")}>
           Cadastrar Funcionário
         </SecondaryButton>
       </Box>

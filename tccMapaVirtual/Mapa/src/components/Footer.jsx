@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 
-
 const FooterContainer = styled.footer`
   background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%);
   color: #f8f9fa;
@@ -129,13 +128,13 @@ export default function Footer() {
         <FooterSection>
           <Title>Contato</Title>
           <ContactText>
-            <span>📍</span> Rua Industrial, 123
+            <span>📍</span> Av. Casa Grande, 1911 - Diadema - SP
           </ContactText>
           <ContactText>
-            <span>📞</span> (11) 99999-9999
+            <span>📞</span> (11) 99733-0961
           </ContactText>
           <ContactText>
-            <span>✉️</span> contato@fabrica.com
+            <span>✉️</span> paranoa@outlook.com
           </ContactText>
         </FooterSection>
 

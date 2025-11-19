@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import api from "../api";
 import { useNavigate } from "react-router-dom";
 import Teia from "../imagens/Teia.jpg";
-import logo from "../imagens/paranoa.png"; 
+import logo from "../imagens/paranoa.png";
 
 export default function Funcionarios() {
   const [email, setEmail] = useState("");
@@ -12,7 +11,7 @@ export default function Funcionarios() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (senha !== confirmarSenha) {
       alert("As senhas não coincidem!");
@@ -20,23 +19,16 @@ export default function Funcionarios() {
     }
 
     setLoading(true);
-    try {
-      const res = await api.post("/auth/register", { email, senha });
-      alert(res.data.message || "Funcionário cadastrado com sucesso!");
-      setEmail("");
-      setSenha("");
-      setConfirmarSenha("");
-      navigate("/");
-    } catch (err) {
-      console.error(err);
-      alert(err.response?.data?.error || "Erro ao cadastrar funcionário");
-    } finally {
-      setLoading(false);
-    }
-  };
 
-  const goToLogin = () => {
-    navigate("/");
+    // Salvando no localStorage (exemplo simples, sobrescreve se já existir)
+    const funcionario = { email, senha };
+    localStorage.setItem("funcionario", JSON.stringify(funcionario));
+
+    setTimeout(() => {
+      alert("Funcionário cadastrado com sucesso!");
+      navigate("/");
+      setLoading(false);
+    }, 700);
   };
 
   return (
@@ -75,7 +67,7 @@ export default function Funcionarios() {
 
         <Divider>ou</Divider>
 
-        <SecondaryButton type="button" onClick={goToLogin}>
+        <SecondaryButton onClick={() => navigate("/")}>
           Voltar para Login
         </SecondaryButton>
       </Box>
@@ -83,8 +75,7 @@ export default function Funcionarios() {
   );
 }
 
-// ---------- ESTILOS ----------
-
+/* estilos (mantive os seus) */
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -95,41 +86,35 @@ const Container = styled.div`
   background-position: center;
   position: relative;
 `;
-
 const Overlay = styled.div`
   position: absolute;
   inset: 0;
-  background: rgba(10, 35, 66, 0.8); /* camada escura para contraste */
+  background: rgba(10, 35, 66, 0.8);
   z-index: 1;
 `;
-
 const Box = styled.div`
   position: relative;
   z-index: 2;
-  background: rgba(27, 27, 27, 0.582); /* cinza semi-transparente */
+  background: rgba(27, 27, 27, 0.582);
   padding: 40px 50px;
   border-radius: 12px;
   box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
   width: 360px;
   text-align: center;
 `;
-
 const LogoImg = styled.img`
-  width: 180px; /* ajuste conforme desejar */
+  width: 180px;
   margin-bottom: 10px;
 `;
-
 const Title = styled.h2`
-  color: #ffffff; /* texto branco para contraste */
+  color: #ffffff;
   margin-bottom: 25px;
 `;
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 15px;
 `;
-
 const Input = styled.input`
   padding: 12px;
   border: 1px solid #ccc;
@@ -140,7 +125,6 @@ const Input = styled.input`
     border-color: #005bbb;
   }
 `;
-
 const Button = styled.button`
   background: #005bbb;
   color: white;
@@ -158,13 +142,11 @@ const Button = styled.button`
     cursor: not-allowed;
   }
 `;
-
 const Divider = styled.p`
   margin: 20px 0 10px;
-  color: #f8f8f8; /* texto branco leve para contraste */
+  color: #f8f8f8;
   font-size: 14px;
 `;
-
 const SecondaryButton = styled.button`
   background: #005bbb;
   color: #ffffff;

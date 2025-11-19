@@ -161,7 +161,7 @@ export default function Navbar() {
         </MenuButton>
 
         <Menu open={menuOpen}>
-          {["Início", "Mapa", "Sobre"].map((item) => (
+          {["Inicio", "Mapa", "Sobre"].map((item) => (
             <MenuItem
               key={item}
               className={active === item ? "active" : ""}

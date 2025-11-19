@@ -66,13 +66,13 @@ const Marker = styled.button`
 
 // ---------- Locais ----------
 const locais = [
-  { id: 1, nome: "Fábrica 3", descricao: "Responsável pela produção principal da linha de montagem.", imagem: "/imagem_locais/fabrica3.jpg", estilo: { top: "40%", left: "13%" } },
-  { id: 2, nome: "Galpão Tapetaria", descricao: "Área dedicada à confecção e acabamento de tapeçarias.", imagem: "/imagem_locais/galpao_tapetaria.jpg", estilo: { top: "58%", left: "18%" } },
-  { id: 3, nome: "Mangueira", descricao: "Área técnica dedicada à montagem e manutenção de mangueiras.", imagem: "/imagem_locais/mangueira.jpg", estilo: { top: "44%", left: "30%" } },
+  { id: 1, nome: "Fábrica", descricao: "Responsável pela produção principal da linha de montagem.", imagem: "/imagem_locais/fabrica3.jpg", estilo: { top: "33%", left: "20%" } },
+  { id: 2, nome: "Galpão Tapetaria", descricao: "Área dedicada à confecção e acabamento de tapeçarias.", imagem: "/imagem_locais/galpao_tapetaria.jpg", estilo: { top: "60%", left: "22%" } },
+  { id: 3, nome: "Mangueira", descricao: "Área técnica dedicada à montagem e manutenção de mangueiras.", imagem: "/imagem_locais/mangueira.jpg", estilo: { top: "47%", left: "31%" } },
   { id: 4, nome: "Montagem", descricao: "Espaço onde os componentes finais são montados e testados.", imagem: "/imagem_locais/montagem.jpg", estilo: { top: "70%", left: "57%" } },
-  { id: 5, nome: "Galpão Fábrica", descricao: "Principal galpão industrial da unidade, com produção em larga escala.", imagem: "/imagem_locais/galpao_fabrica.jpg", estilo: { top: "55%", left: "69%" } },
-  { id: 6, nome: "Portaria", descricao: "Entrada principal da fábrica e controle de acesso.", imagem: "/imagem_locais/portaria.jpg", estilo: { top: "89%", left: "68%" } },
-  { id: 7, nome: "Administração / Refeitório", descricao: "Área administrativa e de convivência dos funcionários.", imagem: "/imagem_locais/admin_refeitorio.jpg", estilo: { top: "60%", left: "42%" } },
+  { id: 5, nome: "Galpão Fábrica", descricao: "Principal galpão industrial da unidade, com produção em larga escala.", imagem: "/imagem_locais/galpao_fabrica.jpg", estilo: { top: "55%", left: "67%" } },
+  { id: 6, nome: "Portaria", descricao: "Entrada principal da fábrica e controle de acesso.", imagem: "/imagem_locais/portaria.png", estilo: { top: "89%", left: "66%" } },
+  { id: 7, nome: "Administração / Refeitório", descricao: "Área administrativa da empresa e de convivência dos funcionários para alimentação.", imagem: "/imagem_locais/admin_refeitorio.jpg", estilo: { top: "66%", left: "42%" } },
   { id: 8, nome: "Almoxarifado", descricao: "Local de armazenamento e controle de estoque.", imagem: "/imagem_locais/almoxarifado.jpg", estilo: { top: "75%", left: "52%" } },
   { id: 9, nome: "Carga e Descarga", descricao: "Área destinada ao recebimento e expedição de materiais.", imagem: "/imagem_locais/carga_descarga.jpg", estilo: { top: "70%", left: "70%" } },
 ];
